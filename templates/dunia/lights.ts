@@ -1,7 +1,7 @@
-// LOOK v1 (locked): TONE and EFFECTS per time of day, kept apart.
+// LIGHTS / LOOK v1 (locked): TONE and EFFECTS per time of day, kept apart.
 //   TONE   = surface colour + light: key direction/colour, lit / shade / lift multipliers, albedo saturation, the sky
 //            gradient and the fog colour. The colour grade stays NEUTRAL (grade.ts): never tone through the grade.
-//   EFFECT = atmosphere on top of the tone (atmos.ts, sky.ts, post): distance fog, 3D light shafts, lamp glow + light
+//   EFFECT = atmosphere on top of the tone (world.ts Sky + Atmos, post): distance fog, 3D light shafts, lamp glow + light
 //            pools, ground mist, motes / fireflies, sun halo + sunburst, moon halo, lens blur, bloom, vignette.
 //            Every effect has an inputProps switch: { fx: { rays: false, ... } }.
 // Change these values only on purpose: they are the channel's look.

@@ -1,6 +1,6 @@
 // Stylised two-tone lighting for every world material (lighting.md 9.2, world part): albedo x mix(shadeCol, litCol,
 // sunTerm), sunTerm = real shadow-map visibility x a soft N.L terminator. The sun visibility is captured inside three's
-// own light loop (LFB), so nothing is computed twice. world.ts sets every uniform below once per frame from look.ts.
+// own light loop (LFB), so nothing is computed twice. world.ts sets every uniform below once per frame from lights.ts.
 import * as THREE from "three";
 
 export const TONE = {

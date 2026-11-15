@@ -8,7 +8,7 @@
 //   3. 3-way tint (split tone): zero-luma RGB offsets in shadows, mids, highlights
 //   4. vignette: x (1 - k * smoothstep(r0, 1, r)), r = elliptical radius, corners = 1
 // `amount` blends the whole grade (0 = bypass) so it can be dialled back once lighting/albedo work brightens the render.
-import type { Light } from "./look";
+import type { Light } from "./lights";
 import { Effect, BlendFunction } from "postprocessing";
 import { Uniform, Vector3, Vector2 } from "three";
 
@@ -126,9 +126,9 @@ export class GradeEffect extends Effect {
   set amount(v: number) { this.uniforms.get("gradeAmount")!.value = v; }
 }
 
-/** LOOK v1: the grade is NEUTRAL for every light. The tone lives in look.ts (light colours, shade colour, albedo
+/** LOOK v1: the grade is NEUTRAL for every light. The tone lives in lights.ts (light colours, shade colour, albedo
  *  saturation); grading the tone in (lifted toe, tints) laid a milky veil over the frame and was rejected. Only the
- *  vignette is used, and that is an effect (Short.tsx sets it per time of day). */
+ *  vignette is used, and that is an effect (Dunia.tsx sets it per time of day). */
 const NEUTRAL: GradeParams = { ky: [0, 0.1, 0.25, 0.5, 0.75, 0.9, 1], sat: [1, 1, 1], tintS: [0, 0], tintM: [0, 0], tintH: [0, 0], vig: [0, 0.5] };
 export const GRADES: Record<Light, GradeParams> = { day: NEUTRAL, golden: NEUTRAL, night: NEUTRAL };
 export const GRADE_STRENGTH: Record<Light, number> = { day: 1, golden: 1, night: 1 };

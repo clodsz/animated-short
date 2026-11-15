@@ -2,19 +2,19 @@
 
 Tiga formula yang sudah ditetapkan untuk dunia 3D. Rinciannya ada di `reports/`.
 
-## Tone (`reports/look.md` §2)
+## Tone (`reports/lighting.md`)
 - Empat waktu: pagi emas, siang pastel bersih, sore jingga-ungu, malam biru jernih.
-- Tone hanya di cahaya dan warna permukaan (`look.ts` `TONE_OF`); grade warna netral.
+- Tone hanya di cahaya dan warna permukaan (`lights.ts` `TONE_OF`); grade warna netral.
 - Benda pastel di siang (saturasi .70–.72); malam saturasi .25 supaya semuanya biru, hangat hanya di lampu.
 - Setiap cahaya punya sumber yang kelihatan; arah matahari/bulan tetap per lokasi dan waktu.
 
-## Efek (`reports/look.md` §3)
+## Efek (`reports/lighting.md` §5, `reports/depth.md`, `reports/grade.md`)
 - Terpisah dari tone dan bisa dimatikan satu per satu (`FX`).
 - Pagi: berkas cahaya kuat, kabut tanah emas, debu. Siang: bersih dan tajam, tanpa blur. Sore: matahari besar,
   sunburst, berkas cahaya, glow lampu. Malam: jernih, bulan besar berhalo, glow kuning + genangan lampu, kunang-kunang.
 - Bloom lembut dan lebar; vignette .18 (.32 malam).
 
-## Gaya dunia (`reports/world.md`)
+## Gaya dunia (`reports/textures.md`, `reports/outlines.md`)
 - Bentuk sederhana dan tebal, bagian penting timbul 5–20 cm, proporsi sedikit dilebihkan.
 - Detail digambar di tekstur Canvas: bidang warna datar, unsur satu per satu, garis sambungan berwarna lokal yang
   digelapkan (bukan hitam).
@@ -23,5 +23,6 @@ Tiga formula yang sudah ditetapkan untuk dunia 3D. Rinciannya ada di `reports/`.
 - Set padat properti dari komponen yang bisa dipakai ulang; latar jauh tetap 3D; kamera tegak dengan shift lens.
 
 ## Frame acuan
-`frames/` berisi still `LookTest` (render repo ini, bentuk polos) di setiap waktu, untuk mencocokkan tone dan efek:
-`pagi.jpg`, `siang.jpg`, `sore.jpg`, `malam.jpg`, `sore_matahari.jpg`.
+- `frames/`: still `LookTest` (render repo ini, bentuk polos) di setiap waktu, untuk mencocokkan tone dan efek:
+  `pagi.jpg`, `siang.jpg`, `sore.jpg`, `malam.jpg`, `sore_matahari.jpg`.
+- `sheets/looktest.jpg`: kelima still dalam satu lembar.

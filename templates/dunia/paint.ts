@@ -1,4 +1,5 @@
-// Canvas2D texture helpers: cached canvas textures, a seeded RNG and the three-tone painted cloud.
+// Painted textures on canvases (cached): seeded RNG, three-tone clouds, sun / moon / sunburst sprites and the
+// effect sprites (glow halo, light pool, ground mist, light shaft).
 import * as THREE from "three";
 
 const TAU = Math.PI * 2;
@@ -57,3 +58,49 @@ export const cloudHD = (seed: number, pal = CLOUD_DAY) => ctex(`cloudHD_${pal.li
   g.globalCompositeOperation = "source-over";
 });
 
+
+// ---------------- sky sprites ----------------
+export const disc = () => ctex("skyDisc", 128, 128, (g) => {
+  const gr = g.createRadialGradient(64, 64, 0, 64, 64, 64); gr.addColorStop(0, "rgba(255,255,255,1)"); gr.addColorStop(0.8, "rgba(255,255,255,1)"); gr.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = gr; g.fillRect(0, 0, 128, 128);
+});
+export const halo = () => ctex("skyHalo", 256, 256, (g) => {
+  const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128); gr.addColorStop(0, "rgba(255,255,255,0.55)"); gr.addColorStop(0.25, "rgba(255,255,255,0.18)"); gr.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+});
+/** painted sunburst: soft radiating rays round a low sun */
+export const burst = () => ctex("skyBurst", 512, 512, (g, r) => {
+  g.translate(256, 256);
+  for (let i = 0; i < 36; i++) {
+    const a = (i / 36) * Math.PI * 2 + r() * 0.08, w = 0.02 + r() * 0.05, L = 150 + r() * 106, gr = g.createLinearGradient(0, 0, Math.cos(a) * L, Math.sin(a) * L);
+    gr.addColorStop(0, "rgba(255,255,255,0.5)"); gr.addColorStop(1, "rgba(255,255,255,0)");
+    g.fillStyle = gr; g.beginPath(); g.moveTo(0, 0); g.lineTo(Math.cos(a - w) * L, Math.sin(a - w) * L); g.lineTo(Math.cos(a + w) * L, Math.sin(a + w) * L); g.closePath(); g.fill();
+  }
+});
+
+// ---------------- effect sprites ----------------
+const radial = (key: string, stops: [number, string][]) => ctex(key, 256, 256, (g) => {
+  const gr = g.createRadialGradient(128, 128, 0, 128, 128, 128);
+  for (const [o, c] of stops) gr.addColorStop(o, c);
+  g.fillStyle = gr; g.fillRect(0, 0, 256, 256);
+});
+export const haloTex = () => radial("fxHalo", [[0, "rgba(255,255,255,0.55)"], [0.18, "rgba(255,255,255,0.28)"], [0.5, "rgba(255,255,255,0.08)"], [1, "rgba(255,255,255,0)"]]);
+export const poolTex = () => radial("fxPool", [[0, "rgba(255,255,255,0.75)"], [0.35, "rgba(255,255,255,0.35)"], [1, "rgba(255,255,255,0)"]]);
+export const mistTex = () => ctex("fxMist", 512, 128, (g, r) => {
+  g.clearRect(0, 0, 512, 128);
+  for (let i = 0; i < 14; i++) {
+    const x = 60 + r() * 392, y = 64 + (r() - 0.5) * 30, rx = 90 + r() * 120, gr = g.createRadialGradient(x, y, 0, x, y, rx);
+    gr.addColorStop(0, "rgba(255,255,255,0.22)"); gr.addColorStop(1, "rgba(255,255,255,0)");
+    g.save(); g.translate(x, y); g.scale(1, 0.32); g.translate(-x, -y); g.fillStyle = gr; g.fillRect(x - rx, y - rx, rx * 2, rx * 2); g.restore();
+  }
+});
+
+export const shaftTex = () => ctex("fxShaft", 128, 512, (g) => {
+  const across = g.createLinearGradient(0, 0, 128, 0);
+  across.addColorStop(0, "rgba(255,255,255,0)"); across.addColorStop(0.5, "rgba(255,255,255,1)"); across.addColorStop(1, "rgba(255,255,255,0)");
+  g.fillStyle = across; g.fillRect(0, 0, 128, 512);
+  g.globalCompositeOperation = "destination-in"; // fade along the length: strongest high up (towards the light), gone at the ground
+  const along = g.createLinearGradient(0, 0, 0, 512);
+  along.addColorStop(0, "rgba(0,0,0,0)"); along.addColorStop(0.2, "rgba(0,0,0,0.9)"); along.addColorStop(0.65, "rgba(0,0,0,0.45)"); along.addColorStop(1, "rgba(0,0,0,0)");
+  g.fillStyle = along; g.fillRect(0, 0, 128, 512);
+});

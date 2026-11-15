@@ -15,7 +15,7 @@ import { InkPass, noInkFallback } from "./ink";
 import { LensBlur } from "./lensblur";
 import { GradeEffect, GRADES, gradeFor } from "./grade";
 import { DOF, TOTAL, shotAt } from "./story";
-import { EFFECT_OF, FX, TONE_OF } from "./look";
+import { EFFECT_OF, FX, TONE_OF } from "./lights";
 
 export const LOOK_FRAMES = TOTAL;
 type PostToggles = { ink: boolean; lens: boolean; bloom: boolean; grade: boolean };

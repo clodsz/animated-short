@@ -16,11 +16,13 @@ langsung dipakai), plus **formula gaya dunia**. Karakter, kamera per adegan, sua
 | Path | Isi |
 |---|---|
 | `SKILL.md` | Skill Claude: cara pakai, aturan kerja, catatan teknis |
-| `templates/dunia/` | Kode look (tone, efek, shading, langit, tinta, blur lensa, grade) + komposisi uji `LookTest` |
-| `templates/scripts/` | Render still dan lembar perbandingan |
+| `templates/dunia/` | Kode look: tone, efek, shading, langit, tinta, blur lensa, grade, komposisi uji `LookTest` |
+| `templates/scripts/` | Render still, lembar perbandingan, merge sandbox |
+| `templates/sandbox_index_example.tsx` | Contoh entry sandbox untuk alur kerja per pemilik file |
 | `references/STYLE_BIBLE.md` | Ringkasan formula tone, efek, dan gaya dunia |
-| `references/reports/` | `look.md` (tone + efek, angka, yang gagal), `world.md` (formula gaya dunia) |
+| `references/reports/` | `CONTEXT`, `lighting`, `depth`, `grade`, `outlines`, `textures` (angka + yang sudah gagal) |
 | `references/frames/` | Still `LookTest` per waktu |
+| `references/sheets/` | Lembar kontak still `LookTest` |
 
 ## Pasang
 1. Salin folder ini ke `~/.claude/skills/animated-short/`.
