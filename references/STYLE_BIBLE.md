@@ -1,0 +1,27 @@
+# Style bible
+
+Tiga formula yang sudah ditetapkan untuk dunia 3D. Rinciannya ada di `reports/`.
+
+## Tone (`reports/look.md` §2)
+- Empat waktu: pagi emas, siang pastel bersih, sore jingga-ungu, malam biru jernih.
+- Tone hanya di cahaya dan warna permukaan (`look.ts` `TONE_OF`); grade warna netral.
+- Benda pastel di siang (saturasi .70–.72); malam saturasi .25 supaya semuanya biru, hangat hanya di lampu.
+- Setiap cahaya punya sumber yang kelihatan; arah matahari/bulan tetap per lokasi dan waktu.
+
+## Efek (`reports/look.md` §3)
+- Terpisah dari tone dan bisa dimatikan satu per satu (`FX`).
+- Pagi: berkas cahaya kuat, kabut tanah emas, debu. Siang: bersih dan tajam, tanpa blur. Sore: matahari besar,
+  sunburst, berkas cahaya, glow lampu. Malam: jernih, bulan besar berhalo, glow kuning + genangan lampu, kunang-kunang.
+- Bloom lembut dan lebar; vignette .18 (.32 malam).
+
+## Gaya dunia (`reports/world.md`)
+- Bentuk sederhana dan tebal, bagian penting timbul 5–20 cm, proporsi sedikit dilebihkan.
+- Detail digambar di tekstur Canvas: bidang warna datar, unsur satu per satu, garis sambungan berwarna lokal yang
+  digelapkan (bukan hitam).
+- Tinta cokelat sangat gelap hanya di siluet, lompatan kedalaman, dan lipatan tajam (~3 px dekat, memudar jauh).
+- Pohon dan semak gumpalan bulat; rumput dan bunga kartu bergaris.
+- Set padat properti dari komponen yang bisa dipakai ulang; latar jauh tetap 3D; kamera tegak dengan shift lens.
+
+## Frame acuan
+`frames/` berisi still `LookTest` (render repo ini, bentuk polos) di setiap waktu, untuk mencocokkan tone dan efek:
+`pagi.jpg`, `siang.jpg`, `sore.jpg`, `malam.jpg`, `sore_matahari.jpg`.
