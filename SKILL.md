@@ -28,6 +28,9 @@ Karakter, gerak kamera per adegan, naskah, suara, audio, dan QA video penuh belu
 3. **Bangun set.** Set baru mengikuti `reports/textures.md` (bentuk, tekstur, vegetasi, kepadatan) dan
    `reports/outlines.md`. Satu set = satu `root` + footprint `area`. Taruh di `build.ts`, ganti `TestSet` di `world.ts`,
    dan berikan set ke `new Atmos(set.root, set.area)`.
+3b. **Benda kompleks** (kendaraan, perabot kaya detail) memakai model 3D jadi, bukan dirakit di kode:
+   `references/ASSETS.md` (cari dengan `templates/scripts/find_asset.py`, muat dengan `templates/dunia/models.ts`,
+   kredit CC BY di deskripsi video).
 4. **Rencanakan shot** di `story.ts`: `SHOTS` (frame + waktu), kunci kamera per shot, `DOF`, `SHIFT`.
 5. **Cek di keempat waktu** tanpa mengubah `lights.ts`, lalu ukur terhadap target `reports/lighting.md` §6.
 
