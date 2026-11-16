@@ -21,30 +21,32 @@ export type Tone = {
   grade: Light;
 };
 
+// VIVID (owner 2026-11-16, after a 3-way A/B): albedo sat 1.0 by day, .55 at night (was .70-.72 / .25), shade lift halved,
+// so colours stay alive in shade like the reference. Values + history: shorts/_gaya/LOOK-DUNIA.md.
 export const TONE_OF: Record<Time, Tone> = {
   // golden morning: low sun, warm gold, pastel
   morning: {
     key: [-0.8, 0.3, -0.5], keyCol: "#ffd28a",
-    lit: [1.66, 1.28, 0.84], shade: [0.42, 0.38, 0.5], lift: [0.08, 0.08, 0.12], lambert: 0.35, sideK: 0.82, term: 0.08, sat: 0.72, pointK: 1,
+    lit: [1.66, 1.28, 0.84], shade: [0.42, 0.38, 0.5], lift: [0.04, 0.04, 0.06], lambert: 0.35, sideK: 0.82, term: 0.08, sat: 1.0, pointK: 1,
     sky: ["#ffe2a8", "#ffd596", "#f6cf9e", "#b9c6dc", "#86a4d2"], fog: "#f6dcb4", fogNear: 60, fogFar: 520, grade: "golden",
   },
   // noon: bright, clean, crisp; pastel storybook (albedo saturation .7)
   noon: {
     key: [0.3, 0.9, 0.35], keyCol: "#fff3e0",
-    lit: [1.76, 1.68, 1.5], shade: [0.42, 0.41, 0.5], lift: [0.07, 0.08, 0.13], lambert: 0.35, sideK: 0.84, term: 0.2, sat: 0.7, pointK: 1,
+    lit: [1.76, 1.68, 1.5], shade: [0.42, 0.41, 0.5], lift: [0.035, 0.04, 0.065], lambert: 0.35, sideK: 0.84, term: 0.2, sat: 1.0, pointK: 1,
     sky: ["#b8d0ec", "#9cbfea", "#6a9fe0", "#4f8cdb", "#3373cc"], fog: "#c4d8ee", fogNear: 160, fogFar: 1000, grade: "day",
   },
   // dusk: low sun, orange-violet, the big sun is the subject
   dusk: {
     key: [0.85, 0.25, -0.18], keyCol: "#ffb36b",
-    lit: [1.6, 1.08, 0.72], shade: [0.42, 0.36, 0.5], lift: [0.07, 0.07, 0.12], lambert: 0.35, sideK: 0.82, term: 0.08, sat: 0.72, pointK: 1,
+    lit: [1.6, 1.08, 0.72], shade: [0.42, 0.36, 0.5], lift: [0.035, 0.035, 0.06], lambert: 0.35, sideK: 0.82, term: 0.08, sat: 1.0, pointK: 1,
     sky: ["#ffc47c", "#f7ae78", "#e8967c", "#c4848e", "#8a6f8a"], fog: "#efb894", fogNear: 90, fogFar: 650, grade: "golden",
   },
   // night: clear saturated blue; albedo nearly grey (sat .25) so the moon colours everything blue; warm only at lamps.
   // Measured target: blue covers >= 75 % of the frame, no green, median luma ~.26-.35
   night: {
     key: [-0.6, 0.75, 0.25], keyCol: "#bcd0ff",
-    lit: [0.3, 0.55, 1.8], shade: [0.1, 0.17, 0.58], lift: [0.05, 0.08, 0.28], lambert: 0.35, sideK: 0.8, term: 0.15, sat: 0.25, pointK: 1,
+    lit: [0.3, 0.55, 1.8], shade: [0.1, 0.17, 0.58], lift: [0.025, 0.04, 0.14], lambert: 0.35, sideK: 0.8, term: 0.15, sat: 0.55, pointK: 1,
     sky: ["#5068c8", "#3e56b8", "#2e44a2", "#22358c", "#172672"], fog: "#3a50b0", fogNear: 90, fogFar: 600, grade: "night",
   },
 };

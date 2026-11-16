@@ -23,7 +23,7 @@ const toggles = (): PostToggles => ({ ink: true, lens: true, bloom: true, grade:
 
 /** bloom: soft and wide; its MIP chain always starts at a 1920-high base so the glow scales with the frame */
 const makeBloom = () => {
-  const b = new BloomEffect({ blendFunction: BlendFunction.ADD, intensity: 0.45, luminanceThreshold: 0.78, luminanceSmoothing: 0.3, mipmapBlur: true, levels: 7, radius: 0.82 });
+  const b = new BloomEffect({ blendFunction: BlendFunction.ADD, intensity: 0.14, luminanceThreshold: 0.92, luminanceSmoothing: 0.2, mipmapBlur: true, levels: 6, radius: 0.7 }); // owner 2026-11-16: crisper (was .45 / .78 / .3 / 7 / .82)
   const mip = b.mipmapBlurPass, setSize = mip.setSize.bind(mip);
   mip.setSize = (w: number, h: number) => setSize(Math.round((1920 * w) / Math.max(h, 1)), 1920);
   return b;
@@ -62,7 +62,7 @@ const Inner: React.FC = () => {
   cam.getWorldDirection(fwd);
   fpt.copy(d?.focus ? new THREE.Vector3(...d.focus) : look);
   fx.lens.focus = Math.max(0.3, fpt.sub(cam.position).dot(fwd));
-  fx.lens.cInf = eff.dof && d ? d.cInf : 0;
+  fx.lens.cInf = eff.dof && d ? d.cInf * 0.2 : 0; // owner 2026-11-16: crisper, background only slightly soft (was x1)
   gradeFor(fx.grade, TONE_OF[shot.time].grade);
   (fx.grade.uniforms.get("gradeVig")!.value as THREE.Vector2).set(FX.vig ? eff.vignette : 0, 0.42);
   return <><primitive object={world.root} dispose={null} />{post}</>;

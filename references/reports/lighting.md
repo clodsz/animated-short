@@ -20,12 +20,14 @@ terminator lembut N·L. Saturasi albedo diputar di sekitar luma dengan `sat`. Ti
 
 ## 3. Tone per waktu
 
+Nilai vivid (2026-11-16, pilihan pemilik): saturasi 1,0 siang / .55 malam, lift bayangan setengah dari v1 (v1: sat .70–.72 / .25).
+
 | Waktu | Arah cahaya (ke sumber) | Warna kunci | lit | shade | lift | sat | Langit (cakrawala → zenit) |
 |---|---|---|---|---|---|---|---|
-| Pagi | -0.8, 0.3, -0.5 | #ffd28a | 1.66 1.28 0.84 | .42 .38 .50 | .08 .08 .12 | .72 | #ffe2a8 → #86a4d2 |
-| Siang | 0.3, 0.9, 0.35 | #fff3e0 | 1.76 1.68 1.50 | .42 .41 .50 | .07 .08 .13 | .70 | #b8d0ec → #3373cc |
-| Sore | 0.85, 0.25, -0.18 | #ffb36b | 1.60 1.08 0.72 | .42 .36 .50 | .07 .07 .12 | .72 | #ffc47c → #8a6f8a |
-| Malam | -0.6, 0.75, 0.25 | #bcd0ff | 0.30 0.55 1.80 | .10 .17 .58 | .05 .08 .28 | .25 | #5068c8 → #172672 |
+| Pagi | -0.8, 0.3, -0.5 | #ffd28a | 1.66 1.28 0.84 | .42 .38 .50 | .04 .04 .06 | 1.0 | #ffe2a8 → #86a4d2 |
+| Siang | 0.3, 0.9, 0.35 | #fff3e0 | 1.76 1.68 1.50 | .42 .41 .50 | .035 .04 .065 | 1.0 | #b8d0ec → #3373cc |
+| Sore | 0.85, 0.25, -0.18 | #ffb36b | 1.60 1.08 0.72 | .42 .36 .50 | .035 .035 .06 | 1.0 | #ffc47c → #8a6f8a |
+| Malam | -0.6, 0.75, 0.25 | #bcd0ff | 0.30 0.55 1.80 | .10 .17 .58 | .025 .04 .14 | .55 | #5068c8 → #172672 |
 
 - Siang, pagi, dan sore pastel: saturasi benda 0,70–0,72, bayangan lembut dan terangkat.
 - Malam: saturasi benda 0,25 (hampir abu-abu), supaya bulan biru mewarnai semuanya. Hangat hanya dari lampu dan jendela.

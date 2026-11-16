@@ -36,11 +36,11 @@ dan tengah tetap tajam.
 ## 5. Blur lensa (efek)
 - Lensa tipis: lingkar kabur = `cInf × |1 − fokus / jarak|` px di 1080, sisi depan × 1,2, maksimum 24 px
   (`lensblur.ts`).
-- Siang tajam (blur mati). Pagi, sore, dan malam: nyala di shot jalanan (`cInf` 6), aerial selalu tajam.
+- Siang tajam (blur mati). Pagi, sore, dan malam: nyala di shot jalanan, ringan (`cInf` 6 x 0,2), aerial selalu tajam.
 - Fokus = titik `DOF[shot].focus`, kalau tidak ada = titik bidik kamera.
 
 ## 6. Bloom (efek)
-Lembut dan lebar: threshold .78, smoothing .3, intensitas .45, 7 level, radius .82, blend ADD. Rantai MIP selalu
+Tipis, hanya di sumber cahaya: threshold .92, smoothing .2, intensitas .14, 6 level, radius .7, blend ADD (2026-11-16; v1 .78 / .3 / .45 / 7 / .82 terlalu berkabut). Rantai MIP selalu
 berbasis tinggi 1920 sehingga glow ikut skala frame.
 
 ## 7. Kamera
